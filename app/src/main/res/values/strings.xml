@@ -8,4 +8,5 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="editora">Editora</string>
     <string name="t_tulo_do_livro">Título do livro</string>
+    <string name="reservar_livro">Reservar Livro</string>
 </resources>
