@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Trabalho-dcc</string>
     <string name="button">Button</string>
+    <string name="cadastrar_reserva">Cadastrar Reserva</string>
+    <string name="cadastrar_livros">Cadastrar Livros</string>
+    <string name="cadastrar_participante">Cadastrar Participante</string>
 </resources>
