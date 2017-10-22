@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Trabalho-dcc</string>
     <string name="button">Button</string>
-    <string name="cadastrar_reserva">Cadastrar Reserva</string>
-    <string name="cadastrar_livros">Cadastrar Livros</string>
-    <string name="cadastrar_participante">Cadastrar Participante</string>
+    <string name="ano_de_publica_o">Ano de Publicação</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="editora">Editora</string>
+    <string name="t_tulo_do_livro">Título do livro</string>
 </resources>
