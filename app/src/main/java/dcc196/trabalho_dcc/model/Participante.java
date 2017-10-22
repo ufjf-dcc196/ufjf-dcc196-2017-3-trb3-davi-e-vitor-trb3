@@ -13,6 +13,11 @@ public class Participante {
     private Date horaEntrada;
     private Date horaSaída;
 
+    @Override
+    public String toString() {
+        return nomeCompleto;
+    }
+
     public Participante () {
 
     }
