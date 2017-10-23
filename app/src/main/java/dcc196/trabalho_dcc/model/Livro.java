@@ -36,4 +36,9 @@ public class Livro {
     public void setAnoPlubicacao(String anoPlubicacao) {
         this.anoPlubicacao = anoPlubicacao;
     }
+
+    @Override
+    public String toString() {
+        return titulo;
+    }
 }

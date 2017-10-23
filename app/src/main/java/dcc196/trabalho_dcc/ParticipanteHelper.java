@@ -11,15 +11,26 @@ import dcc196.trabalho_dcc.model.Participante;
 
 public class ParticipanteHelper {
 
+    private static ParticipanteHelper phs = null;
     private List<Participante> participantes = new ArrayList<>();
 
+    private ParticipanteHelper () {
 
-    List<Participante> listarParticipantes() {
+    }
 
+    public List<Participante> listarParticipantes() {
         return participantes;
     }
 
     public void criar(Participante participante) {
         participantes.add(participante);
     }
+
+    public static ParticipanteHelper getInstance() {
+        if (phs == null) {
+            phs = new ParticipanteHelper();
+        }
+        return phs;
+    }
+
 }

@@ -11,6 +11,7 @@ import dcc196.trabalho_dcc.model.Reserva;
 
 public class ReservaHelper {
 
+    private static ReservaHelper rhs = null;
     private List<Reserva> reservas = new ArrayList<>();
 
     public void criar(Reserva reserva) {
@@ -19,5 +20,12 @@ public class ReservaHelper {
 
     public List<Reserva> listarReservas() {
         return reservas;
+    }
+
+    public static ReservaHelper getInstance() {
+        if (rhs == null) {
+            rhs = new ReservaHelper();
+        }
+        return rhs;
     }
 }

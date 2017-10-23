@@ -11,7 +11,12 @@ import dcc196.trabalho_dcc.model.Livro;
 
 public class LivroHelper {
 
+    private static LivroHelper lhs = null;
     private List<Livro> livros = new ArrayList<>();
+
+    private LivroHelper () {
+
+    }
 
     public void criar(Livro livro) {
         livros.add(livro);
@@ -19,5 +24,11 @@ public class LivroHelper {
 
     public List<Livro> listarLivros() {
         return livros;
+    }
+
+    public static LivroHelper getInstance() {
+        if (lhs == null)
+            lhs = new LivroHelper();
+        return lhs;
     }
 }

@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCadastrarReserva;
     private Button btnCadastrarLivro;
     private ListView lvParticipantes;
-    private ParticipanteHelper ph;
-    private LivroHelper lh;
     private ReservaHelper rh;
 
     @Override
@@ -32,38 +30,43 @@ public class MainActivity extends AppCompatActivity {
         btnCadastrarReserva = (Button) findViewById(R.id.btnCadastrarReserva);
         btnCadastrarLivro = (Button) findViewById(R.id.btnCadastrarLivro);
         lvParticipantes = (ListView) findViewById(R.id.lvParticipantes);
-        ph = new ParticipanteHelper();
-        lh = new LivroHelper();
         rh = new ReservaHelper();
 
+        ParticipanteHelper p = ParticipanteHelper.getInstance();
+        LivroHelper l = LivroHelper.getInstance();
+        if (p != null) {
         //Carregamento de dados
-        Participante p1 = new Participante();
-        p1.setNomeCompleto("Davi de Almeida");
-        p1.setEmail("davi.c@gmail.com");
-        ph.criar(p1);
-        Participante p2 = new Participante();
-        p2.setNomeCompleto("Ricardo Tuboly");
-        p2.setEmail("ricardo.c@gmail.com");
-        ph.criar(p2);
+            Participante p1 = new Participante();
+            p1.setNomeCompleto("Davi de Almeida");
+            p1.setEmail("davi.c@gmail.com");
+            p.criar(p1);
 
-        Livro l1 = new Livro();
-        l1.setTitulo("Senhor dos Anéis");
-        l1.setEditora("Almenara");
-        l1.setAnoPlubicacao("2000");
-        lh.criar(l1);
+            Participante p2 = new Participante();
+            p2.setNomeCompleto("Ricardo Tuboly");
+            p2.setEmail("ricardo.c@gmail.com");
+            p.criar(p2);
 
-        Livro l2 = new Livro();
-        l2.setTitulo("Senhor dos Anéis");
-        l2.setEditora("Almenara");
-        l2.setAnoPlubicacao("2000");
-        lh.criar(l2);
+            if (l != null) {
+                Livro l1 = new Livro();
+                l1.setTitulo("Senhor dos Anéis");
+                l1.setEditora("Almenara");
+                l1.setAnoPlubicacao("2000");
+                l.criar(l1);
 
-        List<Participante> participantes = ph.listarParticipantes();
+                Livro l2 = new Livro();
+                l2.setTitulo("Star Wars");
+                l2.setEditora("Yoda");
+                l2.setAnoPlubicacao("1990");
+                l.criar(l2);
+            }
 
-        ArrayAdapter<Participante> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, participantes);
+            List<Participante> participantes = ParticipanteHelper.getInstance().listarParticipantes();
 
-        lvParticipantes.setAdapter(adapter);
+            ArrayAdapter<Participante> adapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_list_item_1, participantes);
+
+            lvParticipantes.setAdapter(adapter);
+        }
 
         btnCadastrarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
