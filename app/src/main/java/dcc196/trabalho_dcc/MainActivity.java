@@ -27,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private ParticipanteHelper ph;
     private LivroHelper lh;
     private ReservaHelper rh;
+    private List<Participante> participantes;// = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btnCadastrarReserva = (Button) findViewById(R.id.btnCadastrarReserva);
         btnCadastrarLivro = (Button) findViewById(R.id.btnCadastrarLivro);
         lvParticipantes = (ListView) findViewById(R.id.lvParticipantes);
-        ph = new ParticipanteHelper();
-        lh = new LivroHelper();
-        rh = new ReservaHelper();
+
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Date hora;  // Ou qualquer outra forma que tem
         //String dataFormatada = sdf.format(hora);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 l.criar(l2);
             }
 
-            List<Participante> participantes = ParticipanteHelper.getInstance().listarParticipantes();
+            participantes = ParticipanteHelper.getInstance().listarParticipantes();
 
             ArrayAdapter<Participante> adapter = new ArrayAdapter<>(
                     this, android.R.layout.simple_list_item_1, participantes);
