@@ -29,7 +29,7 @@
         android:layout_marginTop="23dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Email"
         app:layout_constraintRight_toRightOf="@+id/edtNomeParticipante"
         app:layout_constraintTop_toBottomOf="@+id/edtNomeParticipante"
         tools:layout_constraintRight_creator="1"

@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import dcc196.trabalho_dcc.model.Livro;
@@ -35,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         ph = new ParticipanteHelper();
         lh = new LivroHelper();
         rh = new ReservaHelper();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Date hora;  // Ou qualquer outra forma que tem
+        //String dataFormatada = sdf.format(hora);
 
         //Carregamento de dados
         Participante p1 = new Participante();
@@ -58,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         l2.setAnoPlubicacao("2000");
         lh.criar(l2);
 
-        List<Participante> participantes = ph.listarParticipantes();
+        final List<Participante> participantes = ph.listarParticipantes();
 
         ArrayAdapter<Participante> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, participantes);
@@ -83,5 +91,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CadastroParticipante.class);
+                startActivity(intent);
+            }
+        });
+
+        lvParticipantes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                Participante p = participantes.get(position);
+
+                if (p.getHoraEntrada().equals(null)) {
+                    p.setHoraEntrada(Calendar.getInstance().getTime());
+                    Toast.makeText(getApplicationContext(), "HoraEntrada atualizada", Toast.LENGTH_SHORT).show();
+                } else if (p.getHoraSaída().equals(null)) {
+                    p.setHoraSaída(Calendar.getInstance().getTime());
+                    Toast.makeText(getApplicationContext(), "HoraSaida atualizada", Toast.LENGTH_SHORT).show();
+                } else {
+                    p.setHoraEntrada(null);
+                    p.setHoraSaída(null);
+                    Toast.makeText(getApplicationContext(), "Horas de entrada e saidas resetadas", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
+
+        lvParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetalheParticipante.class);
+                startActivity(intent);
+            }
+        });
     }
 }

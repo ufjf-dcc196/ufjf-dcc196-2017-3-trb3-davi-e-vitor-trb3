@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".CadastroLivro" />
         <activity android:name=".CadastroReserva" />
-        <activity android:name=".CadastroParticipante"></activity>
+        <activity android:name=".CadastroParticipante" />
+        <activity android:name=".DetalheParticipante"></activity>
     </application>
 
 </manifest>
