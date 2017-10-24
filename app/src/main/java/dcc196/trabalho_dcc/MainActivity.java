@@ -3,9 +3,11 @@ package dcc196.trabalho_dcc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -24,10 +26,15 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCadastrarReserva;
     private Button btnCadastrarLivro;
     private ListView lvParticipantes;
-    private ParticipanteHelper ph;
-    private LivroHelper lh;
-    private ReservaHelper rh;
-    private List<Participante> participantes;// = null;
+    private List<Participante> participantes;
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BaseAdapter adapter = (BaseAdapter) lvParticipantes.getAdapter();
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 l.criar(l2);
             }
 
-            participantes = ParticipanteHelper.getInstance().listarParticipantes();
+
 
             ArrayAdapter<Participante> adapter = new ArrayAdapter<>(
-                    this, android.R.layout.simple_list_item_1, participantes);
+                    this, android.R.layout.simple_list_item_1, ParticipanteHelper.getInstance().listarParticipantes());
 
             lvParticipantes.setAdapter(adapter);
+
+
         }
 
         btnCadastrarReserva.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         btnCadastrarParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("TAG", String.valueOf(ParticipanteHelper.getInstance().listarParticipantes().size()));
                 Intent intent = new Intent(MainActivity.this, CadastroParticipante.class);
                 startActivity(intent);
             }

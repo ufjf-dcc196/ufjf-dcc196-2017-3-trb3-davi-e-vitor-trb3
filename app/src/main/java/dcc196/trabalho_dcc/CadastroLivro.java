@@ -14,6 +14,7 @@ public class CadastroLivro extends AppCompatActivity {
     private EditText campoTitulo;
     private EditText campoEditora;
     private EditText campoAnoPubliicacao;
+    private LivroHelper lh = LivroHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class CadastroLivro extends AppCompatActivity {
                 livro.setTitulo(campoTitulo.getText().toString());
                 livro.setEditora(campoEditora.getText().toString());
                 livro.setAnoPlubicacao(campoAnoPubliicacao.getText().toString());
+                lh.criar(livro);
             }
         });
     }
