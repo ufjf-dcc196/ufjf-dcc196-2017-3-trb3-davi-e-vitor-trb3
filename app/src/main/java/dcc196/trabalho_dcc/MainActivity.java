@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCadastrarReserva;
     private Button btnCadastrarLivro;
     private ListView lvParticipantes;
-    private List<Participante> participantes;
 
 
     @Override
@@ -120,13 +119,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Participante p = ParticipanteHelper.getInstance().listarParticipantes().get(position);
 
-                Participante p = participantes.get(position);
-
-                if (p.getHoraEntrada().equals(null)) {
+                if (p.getHoraEntrada() == null) {
                     p.setHoraEntrada(Calendar.getInstance().getTime());
                     Toast.makeText(getApplicationContext(), "HoraEntrada atualizada", Toast.LENGTH_SHORT).show();
-                } else if (p.getHoraSaída().equals(null)) {
+                } else if (p.getHoraSaída() == null) {
                     p.setHoraSaída(Calendar.getInstance().getTime());
                     Toast.makeText(getApplicationContext(), "HoraSaida atualizada", Toast.LENGTH_SHORT).show();
                 } else {
