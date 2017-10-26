@@ -3,6 +3,8 @@ package dcc196.trabalho_dcc;
 import java.util.ArrayList;
 import java.util.List;
 
+import dcc196.trabalho_dcc.model.Livro;
+import dcc196.trabalho_dcc.model.Participante;
 import dcc196.trabalho_dcc.model.Reserva;
 
 /**
@@ -20,6 +22,16 @@ public class ReservaHelper {
 
     public List<Reserva> listarReservas() {
         return reservas;
+    }
+
+    public List<Participante> reservaramLivro(Livro livro) {
+        List<Participante> r = new ArrayList<>();
+        for (Reserva rs : reservas)
+              {
+            if (rs.getLivro().equals(livro))
+                r.add(rs.getParticipante());
+        }
+        return r;
     }
 
     public static ReservaHelper getInstance() {
