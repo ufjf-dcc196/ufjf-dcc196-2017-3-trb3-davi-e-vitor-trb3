@@ -1,5 +1,6 @@
 package dcc196.trabalho_dcc;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,11 @@ public class DetalheLivro extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Livro livro = LivroHelper.getInstance().listarLivros().get(position);
                 ArrayList<Participante> participantes = (ArrayList<Participante>) ReservaHelper.getInstance().reservaramLivro(livro);
-                Toast.makeText(getApplicationContext(), Integer.toString(participantes.size()), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(DetalheLivro.this, DadosLivro.class);
+                intent.putExtra("Livro", livro);
+                intent.putExtra("Participantes", participantes);
+                startActivity(intent);
             }
         });
     }

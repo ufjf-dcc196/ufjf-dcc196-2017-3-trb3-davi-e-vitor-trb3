@@ -1,10 +1,12 @@
 package dcc196.trabalho_dcc.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Vitor on 22/10/2017.
  */
 
-public class Livro {
+public class Livro implements Serializable{
     private String titulo;
     private String editora;
     private String anoPlubicacao;
