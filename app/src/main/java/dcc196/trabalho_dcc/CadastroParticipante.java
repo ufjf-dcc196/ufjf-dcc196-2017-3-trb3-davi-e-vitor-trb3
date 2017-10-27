@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import dcc196.trabalho_dcc.model.Participante;
 
@@ -31,7 +32,7 @@ public class CadastroParticipante extends AppCompatActivity {
                 participante.setNomeCompleto(edtNomeParticipante.getText().toString());
                 participante.setEmail(edtEmailParticipante.getText().toString());
                 ph.criar(participante);
-
+                Toast.makeText(getApplicationContext(), "Participante cadastrado", Toast.LENGTH_SHORT).show();
             }
         });
 

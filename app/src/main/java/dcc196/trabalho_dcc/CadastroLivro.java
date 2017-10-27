@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import dcc196.trabalho_dcc.model.Livro;
 
@@ -37,6 +38,7 @@ public class CadastroLivro extends AppCompatActivity {
                 livro.setEditora(campoEditora.getText().toString());
                 livro.setAnoPlubicacao(campoAnoPubliicacao.getText().toString());
                 lh.criar(livro);
+                Toast.makeText(getApplicationContext(), "Livro cadastrado", Toast.LENGTH_SHORT).show();
             }
         });
 
