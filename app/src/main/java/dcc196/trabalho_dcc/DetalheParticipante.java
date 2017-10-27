@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import dcc196.trabalho_dcc.model.Participante;
+
 public class DetalheParticipante extends AppCompatActivity {
 
     private TextView txtNome;
@@ -21,6 +23,17 @@ public class DetalheParticipante extends AppCompatActivity {
         horaEntrada = (TextView) findViewById(R.id.txtHoraEntrada);
         horaSaida = (TextView) findViewById(R.id.txtHoraSaida);
 
+        Participante p = (Participante) getIntent().getSerializableExtra("Participante");
+
+        txtNome.setText(p.getNomeCompleto().toString());
+        txtEmail.setText(p.getEmail().toString());
+        if (p.getHoraEntrada() != null && p.getHoraSaída() != null) {
+            horaEntrada.setText(p.getHoraEntrada().toString());
+            horaSaida.setText(p.getHoraSaída().toString());
+        } else if (p.getHoraEntrada() != null && p.getHoraSaída() == null)
+            horaEntrada.setText(p.getHoraEntrada().toString());
+        else if (p.getHoraEntrada() == null && p.getHoraSaída() != null)
+            horaSaida.setText(p.getHoraSaída().toString());
 
     }
 }

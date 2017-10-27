@@ -1,13 +1,14 @@
 package dcc196.trabalho_dcc.model;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Vitor on 22/10/2017.
  */
 
-public class Participante {
+public class Participante implements Serializable {
     private String nomeCompleto;
     private String email;
     private Date horaEntrada;

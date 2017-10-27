@@ -15,7 +15,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import dcc196.trabalho_dcc.model.Livro;
 import dcc196.trabalho_dcc.model.Participante;
@@ -132,14 +131,18 @@ public class MainActivity extends AppCompatActivity {
                     p.setHoraSaída(null);
                     Toast.makeText(getApplicationContext(), "Horas de entrada e saidas resetadas", Toast.LENGTH_SHORT).show();
                 }
-                return false;
+                return true;
             }
         });
 
         lvParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                Participante p = ParticipanteHelper.getInstance().listarParticipantes().get(position);
                 Intent intent = new Intent(MainActivity.this, DetalheParticipante.class);
+                intent.putExtra("Participante", p);
                 startActivity(intent);
             }
         });
