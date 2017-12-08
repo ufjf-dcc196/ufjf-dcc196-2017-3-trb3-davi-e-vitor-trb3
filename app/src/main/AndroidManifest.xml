@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadastroTarefa" />
+        <activity android:name=".CadastroEtiqueta" />
+        <activity android:name=".EditarTarefa" />
+        <activity android:name=".DetalheEtiqueta" />
     </application>
 
 </manifest>
